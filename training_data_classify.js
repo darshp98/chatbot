@@ -9,13 +9,38 @@ var fs = require("fs");
 const alphanumeric = /^[0-9a-zA-Z]+$/; //regular expression- only words w letters/nums
 
 //using trending twitter words and associating them w categories
+/* topics:
+1. music
+2. film
+3. social medias
+4. animals
+5.food */
 var trends = { 
-    "McGregor": "sports",
-    "Matsuyama": "sports",
-    "Scott Laughton": "sports",
-    "BTS": "music",
-    "Bjork": "music",
-    "iHeartAwards": "music"
+    "director": "film",
+    "actor": "film",
+    "movie": "film",
+    "film": "film",
+    "actress": "film",
+    "music": "music",
+    "singer": "music",
+    "song": "music",
+    "album": "music",
+    "tour": "music",
+    "social media": "social media",
+    "instagram": "social media",
+    "facebook": "social media",
+    "tiktok": "social media",
+    "twitter": "social media",
+    "animal": "animals",
+    "dog": "animals",
+    "cat": "animals",
+    "pet": "animals",
+    "bunny": "animals",
+    "meal": "food",
+    "breakfast": "food",
+    "lunch": "food",
+    "dinner": "food",
+    "food": "food"
 }
 
 //iterates thru trends array
@@ -36,7 +61,7 @@ for (let [key, value] of Object.entries(trends)) {
             }
 
             index++;
-            if (index == 6) {
+            if (index == 25) {
 
                 var stateJson = classifier.toJson();
                 fs.writeFile("./classifier.json", stateJson, function (err, data) {

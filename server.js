@@ -39,7 +39,7 @@ var response;
 function newConnection(socket) {
     console.log("new connection! " + socket.id);
 
-    socket.on('guess', guessMsg); //
+    socket.on('guess', guessMsg);
 
     async function guessMsg(data) {
         mlReadyData = cleanup(data);
@@ -47,9 +47,15 @@ function newConnection(socket) {
         var category = await coolClassifier.categorize(mlReadyData); //await makes async
 
         if (category == 'music') {
-response = "Omg great song";
-        } else if (category == 'sports') {
-            response = "Omg great game";
+            response = "Cool! My favorite artist is Adele. She ALWAYS gets me in the feels.";
+        } else if (category == 'film') {
+            response = "I'm a hugeee Marvel nerd TBH. Iron Man is my fave!";
+        } else if (category == 'food') {
+            response = "Breakfast foods over everything. I could eat waffles everyday for the rest of my life.";
+        } else if (category == 'animals') {
+            response = "OMG I have the cutest labrador retriever.";
+        } else if (category == 'social media') {
+            response = "I am addicted to TikTok no joke.";
         }
 
         //.emit- send to everyone and messenger; route name, data

@@ -6,40 +6,47 @@ classify- takes tweets of queries, puts keywords in json file
 var chatInput;
 var chatButton;
 var machineText;
+var newInput = 150;
+var newInput2 = 190;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER);
+  textFont('Courier New');
 
-  chatInput = createInput('What do you love to do?');
+  chatInput = createInput();
   chatInput.size(500);
-  chatInput.position((windowWidth/2) - (250), 200);
+  chatInput.position((windowWidth / 2) - (300), 175);
 
   chatButton = createButton("Enter");
   chatButton.mousePressed(enteredChat);
-  chatButton.position(950,200)
-
-  machineText = createP(); //paragraph tag
-  machineText.position(500, 300)
+  chatButton.position(930, 175);
 
   //set up socket- defined in server but need to also define in index to use here
   socket = io.connect('http://localhost:3000');
   socket.on('guess', makeAGuess); //setup route
-  
 }
 
-//needs to take 
+var chatText;
 function enteredChat() {
-  var chatText = chatInput.value();
+  chatText = chatInput.value();
 
   //need to send data to server (?) - emit has two params: route name (anything u want), data
   socket.emit('guess', chatText);
+  newInput += 75;
+  newInput2 += 75;
 }
 
 function makeAGuess(data) {
-  machineText.html(data);
+  machineText = str(data);
 }
 
 function draw() {
-  background(220);
+  fill(138, 155, 104);
+  textSize(20)
+  text("Let's Chat! \nI love to talk about films, music, animals, social media, and food :)", windowWidth / 2, 100);
+  textSize(16);
+  text(machineText, 800, newInput2);
+  fill(147, 123, 99);
+  text(chatText, 550, newInput);
 }

@@ -1,8 +1,26 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color:#D5DDBC;
+  height:fit-content;
 }
 
 canvas {
   display: block;
+}
+
+input[type=text] {
+  width: 100%;
+  border: none;
+  background-color: #b6c197;
+  color: #937b63;
+  border: 2px solid #8a9b68;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+  background-color: #b6c197;
+  color: #937b63;
+  border: 2px solid #8a9b68;
+  font-family: 'Courier New', Courier, monospace;
 }
