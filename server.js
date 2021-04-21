@@ -35,6 +35,31 @@ var socket = require('socket.io');
 var io = socket(server); //need to handle in and out data - param is server name
 
 var response;
+var music = [
+    "Cool! My favorite artist is Adele. She ALWAYS gets me in the feels.",
+    "I've been itching to go to a concert!",
+    "Nice! I love me some 2000's R&B."
+];
+var film = [
+    "I'm a hugeee Marvel nerd TBH. Iron Man is my fave!",
+    "Neat! I've been wanting to see a good thriller movie, but can't find one :(",
+    "Margot Robbie is iconic." 
+];
+var animals = [
+    "OMG I have the cutest labrador retriever.",
+    "Wow! I've been wanting a cat so bad lately.",
+    "My spirit animal is definitely that for sure."
+];
+var socialmedia = [
+    "I am addicted to TikTok no joke.",
+    "Sometimes, it can be so toxic.",
+    "That reminds me! I need to update my FB status."
+];
+var food = [
+    "I could eat waffles everyday for the rest of my life.",
+    "My favorite meal has got to be breakfast.",
+    "Nice! I'm trying to eat more healthy nowadays."
+];
 
 function newConnection(socket) {
     console.log("new connection! " + socket.id);
@@ -47,15 +72,15 @@ function newConnection(socket) {
         var category = await coolClassifier.categorize(mlReadyData); //await makes async
 
         if (category == 'music') {
-            response = "Cool! My favorite artist is Adele. She ALWAYS gets me in the feels.";
+            response = music[Math.floor(Math.random() * 3)];
         } else if (category == 'film') {
-            response = "I'm a hugeee Marvel nerd TBH. Iron Man is my fave!";
+            response = film[Math.floor(Math.random() * 3)];
         } else if (category == 'food') {
-            response = "Breakfast foods over everything. I could eat waffles everyday for the rest of my life.";
+            response = food[Math.floor(Math.random() * 3)];
         } else if (category == 'animals') {
-            response = "OMG I have the cutest labrador retriever.";
+            response = animals[Math.floor(Math.random() * 3)];
         } else if (category == 'social media') {
-            response = "I am addicted to TikTok no joke.";
+            response = socialmedia[Math.floor(Math.random() * 3)];
         }
 
         //.emit- send to everyone and messenger; route name, data

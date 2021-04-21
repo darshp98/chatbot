@@ -10,8 +10,7 @@ var newInput = 150;
 var newInput2 = 190;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  textAlign(CENTER);
+  createCanvas(windowWidth, 1000);
   textFont('Courier New');
 
   chatInput = createInput();
@@ -43,10 +42,13 @@ function makeAGuess(data) {
 
 function draw() {
   fill(138, 155, 104);
-  textSize(20)
+  textSize(20)  
+  textAlign(CENTER);
   text("Let's Chat! \nI love to talk about films, music, animals, social media, and food :)", windowWidth / 2, 100);
   textSize(16);
-  text(machineText, 800, newInput2);
+  textAlign(RIGHT);
+  text(machineText, 700, newInput2, 350, 200);
   fill(147, 123, 99);
-  text(chatText, 550, newInput);
+  textAlign(LEFT);
+  text(chatText, 400, newInput, 350,200);
 }
